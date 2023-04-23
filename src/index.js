@@ -25,7 +25,15 @@ bot.on("message", async (msg) => {
       );
 
       const ayah = response.data.data.text;
-      bot.sendMessage(chatID, ayah);
+      const surahName = response.data.data.surah.englishName;
+      const ayahNum = response.data.data.numberInSurah;
+      bot.sendMessage(
+        chatID,
+        `${ayah}\n\n<i>${surahName} surasi, ${ayahNum} oyat</i>`,
+        {
+          parse_mode: "HTML",
+        }
+      );
     }
   } catch (error) {
     bot.sendMessage(chatID, "Oyat topilmadi😔.");
