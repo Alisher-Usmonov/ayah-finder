@@ -29,7 +29,7 @@ bot.on("message", async (msg) => {
       const ayahNum = response.data.data.numberInSurah;
       bot.sendMessage(
         chatID,
-        `${ayah}\n\n<i>${surahName} surasi, ${ayahNum} oyat</i>`,
+        `${ayah}\n\n<i>${surahName} surasi, ${ayahNum}-oyat</i>`,
         {
           parse_mode: "HTML",
         }
