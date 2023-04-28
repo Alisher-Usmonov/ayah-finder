@@ -22,7 +22,7 @@ bot.on("message", async (msg) => {
       user = await users.create({
         id: chatID,
       });
-    } else {
+    } 
       if (text == "/start") {
         bot.sendMessage(
           chatID,
@@ -52,7 +52,6 @@ bot.on("message", async (msg) => {
           }
         );
       }
-    }
   } catch (error) {
     bot.sendMessage(chatID, "Oyat topilmadi😔.");
   }
