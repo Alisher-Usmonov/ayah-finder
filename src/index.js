@@ -18,13 +18,13 @@ bot.on("message", async (msg) => {
     id: chatID,
   });
   try {
-    if (!user) {
-      user = await users.create({
-        id: chatID,
-      });
-    } else {
       if (text == "/start") {
-        bot.sendMessage(
+        if (!user) {
+         user = await users.create({
+          id: chatID,
+         });
+        } 
+       bot.sendMessage(
           chatID,
           "Assalomu alaykum. O'zingizga kerakli oyatni topish uchun oyat raqamini <code>12:34</code> yoki <code>266</code> ko'rinishida yuboring😊.",
           {
@@ -52,7 +52,6 @@ bot.on("message", async (msg) => {
           }
         );
       }
-    }
   } catch (error) {
     bot.sendMessage(chatID, "Oyat topilmadi😔.");
   }
