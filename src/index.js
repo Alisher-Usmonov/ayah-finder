@@ -1,7 +1,7 @@
 import TelegramBot from "node-telegram-bot-api";
 import ENV from "../env.config.js";
 import axios from "axios";
-// import transliterator from "./utils/transliterator.js";
+import transliterator from "./utils/transliterator.js";
 import mongo from "./modules/mongo.js";
 import users from "./models/UsersModel.js";
 
@@ -36,7 +36,7 @@ bot.on("message", async (msg) => {
           `http://api.alquran.cloud/v1/ayah/${text}/uz.sodik`
         );
 
-        const ayah = response.data.data.text;
+        const ayah = transliterator.toLatin(response.data.data.text);
         const surahName = response.data.data.surah.englishName;
         const ayahNum = response.data.data.numberInSurah;
         const location =
