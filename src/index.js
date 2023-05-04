@@ -14,17 +14,17 @@ mongo();
 bot.on("message", async (msg) => {
   const { id: chatID } = msg.from;
   const { text } = msg;
-  const user = await users.findOne({
+  let user = await users.findOne({
     id: chatID,
   });
   try {
-    if (text == "/start") {
+    if (text === "/start") {
       if (!user) {
         user = await users.create({
           id: chatID,
         });
       }
-      bot.sendMessage(
+      await bot.sendMessage(
         chatID,
         "Assalomu alaykum. O'zingizga kerakli oyatni topish uchun oyat raqamini <code>12:34</code> yoki <code>266</code> ko'rinishida yuboring😊.",
         {
